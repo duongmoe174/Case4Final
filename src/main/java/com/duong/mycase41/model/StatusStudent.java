@@ -13,6 +13,7 @@ public class StatusStudent {
     public StatusStudent() {
     }
 
+
     public StatusStudent(Long id, String name) {
         this.id = id;
         this.name = name;
