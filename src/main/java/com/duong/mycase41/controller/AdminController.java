@@ -1,14 +1,10 @@
 package com.duong.mycase41.controller;
 
-import com.duong.mycase41.model.AppSubject;
-import com.duong.mycase41.model.Classes;
-import com.duong.mycase41.model.DTO.formUser.TeacherForm;
-import com.duong.mycase41.model.Student;
-import com.duong.mycase41.model.Teacher;
-import com.duong.mycase41.repository.ISubjectRepository;
+import com.duong.mycase41.model.*;
+import com.duong.mycase41.model.DTO.formUser.MinistryForm;
 import com.duong.mycase41.service.classes.ClassesService;
 import com.duong.mycase41.service.gender.IGenderService;
-import com.duong.mycase41.service.student.IStudentService;
+import com.duong.mycase41.service.ministry.IMinistryService;
 import com.duong.mycase41.service.subject.ISubjectService;
 import com.duong.mycase41.service.teacher.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,4 +86,20 @@ public class AdminController {
 //        String password = teacherForm.getAppUser().getPassword();
 //        Set role = teacherForm.getAppUser().getRoleSet();
 //    }
+
+    //----------Ministry-----------
+    @Autowired
+    private IMinistryService ministryService;
+
+    @GetMapping("/ministries")
+    public ResponseEntity<Iterable<Ministry>> getAllMinistry(){
+        return new ResponseEntity<>(ministryService.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("/ministries")
+    public ResponseEntity<Ministry> createMinistry(@ModelAttribute MinistryForm ministryForm){
+        MultipartFile file = ministryForm.getAvatar();
+        String fileName = file.getOriginalFilename();
+        String fileUpLoad = environment.getProperty("upload.path").toString();
+    }
 }

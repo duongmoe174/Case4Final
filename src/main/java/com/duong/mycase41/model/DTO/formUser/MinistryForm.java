@@ -1,28 +1,28 @@
-package com.duong.mycase41.model;
+package com.duong.mycase41.model.DTO.formUser;
 
+
+
+import com.duong.mycase41.model.AppUser;
+import com.duong.mycase41.model.Gender;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.OneToOne;
 
 public class MinistryForm {
     private Long id;
-
     private AppUser appUser;
     private String fullName;
     private String phoneNumber;
-    private String avatar;
+    private MultipartFile avatar;
     private String email;
-
     private Gender gender;
     private String dateOfBirth;
     private String address;
 
-    private MultipartFile image;
 
     public MinistryForm() {
     }
 
-    public MinistryForm(Long id, AppUser appUser, String fullName, String phoneNumber, String avatar, String email, Gender gender, String dateOfBirth, String address, MultipartFile image) {
+    public MinistryForm(Long id, AppUser appUser, String fullName, String phoneNumber, MultipartFile avatar, String email, Gender gender, String dateOfBirth, String address) {
         this.id = id;
         this.appUser = appUser;
         this.fullName = fullName;
@@ -32,10 +32,9 @@ public class MinistryForm {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
-        this.image = image;
     }
 
-    public MinistryForm(AppUser appUser, String fullName, String phoneNumber, String avatar, String email, Gender gender, String dateOfBirth, String address, MultipartFile image) {
+    public MinistryForm(AppUser appUser, String fullName, String phoneNumber, MultipartFile avatar, String email, Gender gender, String dateOfBirth, String address) {
         this.appUser = appUser;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -44,7 +43,6 @@ public class MinistryForm {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
-        this.image = image;
     }
 
     public Long getId() {
@@ -79,11 +77,11 @@ public class MinistryForm {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAvatar() {
+    public MultipartFile getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(MultipartFile avatar) {
         this.avatar = avatar;
     }
 
@@ -117,13 +115,5 @@ public class MinistryForm {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public MultipartFile getImage() {
-        return image;
-    }
-
-    public void setImage(MultipartFile image) {
-        this.image = image;
     }
 }
